@@ -85,7 +85,7 @@ player::build_render_vertices(app &app)
     vec2 left_outer = pos2d - forward * 0.02F - right * wing_width;
     vec2 right_outer = pos2d - forward * 0.02F + right * wing_width;
     vec2 left_inner = pos2d - right * (wing_width - arm_thickness);
-    vec2 right_inner = pos2d + right * (wing_width - arm_thickness);
+    vec2 right_inner = pos2d + right * (wing_width + arm_thickness);
     vec2 rear = pos2d - forward * 0.035F;
 
     auto make_vertex = [&](vec2 p)
@@ -97,23 +97,13 @@ player::build_render_vertices(app &app)
         };
     };
 
-    // /* left arm */
-    // app.push_vertex(1, make_vertex(left_outer));
-    // app.push_vertex(1, make_vertex(nose));
-    // app.push_vertex(1, make_vertex(rear));
-
-    // /* right arm */
-    // app.push_vertex(1, make_vertex(right_outer));
-    // app.push_vertex(1, make_vertex(nose));
-    // app.push_vertex(1, make_vertex(rear));
-
     /* left arm */
-    app.push_vertex(1, { { -0.5, -0.5, 0 }, { 0, 0 }, ship_color });
-    app.push_vertex(1, { { 0.5, -0.5, 0 }, { 0, 0 }, ship_color });
-    app.push_vertex(1, { { 0, 0.5, 0 }, { 0, 0 }, ship_color });
+    app.push_vertex(1, make_vertex(left_outer));
+    app.push_vertex(1, make_vertex(nose));
+    app.push_vertex(1, make_vertex(rear));
 
     /* right arm */
-    app.push_vertex(1, { { 0.5, 0.5, 0 }, { 0, 0 }, ship_color });
-    app.push_vertex(1, { { -0.5, 0.5, 0 }, { 0, 0 }, ship_color });
-    app.push_vertex(1, { { 0, -0.5, 0 }, { 0, 0 }, ship_color });
+    app.push_vertex(1, make_vertex(right_outer));
+    app.push_vertex(1, make_vertex(nose));
+    app.push_vertex(1, make_vertex(rear));
 }

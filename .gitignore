@@ -1,20 +1,6 @@
-*
+*.spv
 
-!*.gitignore
+target
+build
 
-!include
-!include/**
-
-!src
-!src/**
-
-!shaders
-!shaders/**
-
-!subprojects
-!subprojects/**
-
-!meson*
-!COPYING
-
-!.clang*
+*.vscode
