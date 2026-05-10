@@ -1,0 +1,1 @@
+game_src = files('player.cc')
